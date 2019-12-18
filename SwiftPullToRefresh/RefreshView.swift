@@ -118,7 +118,7 @@ open class RefreshView: UIView {
         beginRefreshing()
     }
 
-    func beginRefreshing() {
+    open func beginRefreshing() {
         guard let scrollView = scrollView, !isRefreshing else { return }
 
         progress = 1
@@ -166,7 +166,7 @@ open class RefreshView: UIView {
 private extension UIScrollView {
     var contentInsetTop: CGFloat {
         if #available(iOS 11.0, *) {
-            return contentInset.top + adjustedContentInset.top
+            return adjustedContentInset.top
         } else {
             return contentInset.top
         }
@@ -174,7 +174,7 @@ private extension UIScrollView {
 
     var contentInsetBottom: CGFloat {
         if #available(iOS 11.0, *) {
-            return contentInset.bottom + adjustedContentInset.bottom
+            return adjustedContentInset.bottom
         } else {
             return contentInset.bottom
         }
